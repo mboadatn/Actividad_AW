@@ -1,288 +1,334 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El DOM — Document Object Model</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El DOM — Document Object Model</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<header class="site-header">
-  <div class="wrap site-header__inner">
-    <span class="logo">&lt;DOM/&gt;</span>
-    <nav class="site-nav" aria-label="Navegación principal">
-      <a href="#que-es">Qué es</a>
-      <a href="#arbol">El árbol</a>
-      <a href="#document">document</a>
-      <a href="#acceso">Acceso</a>
-      <a href="#cambios">Cambiar</a>
-      <a href="#eventos">Eventos</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-
-
-  <section class="hero" id="que-es">
-    <div class="wrap hero__inner">
-      <div class="hero__text">
-        <p class="eyebrow">Document Object Model</p>
-        <h1>Cada página web<br>es un árbol.</h1>
-        <p class="hero__lede">
-          El DOM convierte tu HTML en una estructura de nodos que JavaScript puede leer,
-          recorrer y modificar en tiempo real. Cada etiqueta es un <em>element</em>;
-          cada relación entre etiquetas es una rama.
-        </p>
-        <a href="#arbol" class="btn btn--primary">Explorar el árbol ↓</a>
-      </div>
-    </div>
-  </section>
-
-  
-  <section class="section section--tree" id="arbol">
-    <div class="wrap">
-      <p class="eyebrow">Signature — árbol interactivo</p>
-      <h2>Toca un nodo para leerlo</h2>
-      <p class="section__lede">
-        Esta es la misma estructura que tenemos en clase. Cada nodo tiene un padre,
-        puede tener hermanos y puede tener hijos. Haz clic en cualquiera para ver
-        cómo JavaScript lo describiría.
-      </p>
-
-      <div class="tree-panel">
-        <div class="tree-scroll">
-          <svg class="dom-svg" id="domTree" viewBox="40 0 1030 500" xmlns="http://www.w3.org/2000/svg">
-
-            <!-- líneas de conexión -->
-            <g class="edges">
-              <line class="edge" x1="550" y1="58"  x2="110" y2="132"/>
-              <line class="edge" x1="550" y1="58"  x2="310" y2="132"/>
-              <line class="edge" x1="550" y1="58"  x2="610" y2="132"/>
-              <line class="edge" x1="550" y1="58"  x2="850" y2="132"/>
-              <line class="edge" x1="550" y1="58"  x2="990" y2="132"/>
-
-              <line class="edge" x1="110" y1="168" x2="110" y2="232"/>
-              <line class="edge" x1="310" y1="168" x2="310" y2="232"/>
-              <line class="edge" x1="310" y1="268" x2="310" y2="332"/>
-              <line class="edge" x1="310" y1="368" x2="310" y2="432"/>
-
-              <line class="edge" x1="610" y1="168" x2="610" y2="232"/>
-              <line class="edge" x1="610" y1="268" x2="520" y2="332"/>
-              <line class="edge" x1="610" y1="268" x2="610" y2="332"/>
-              <line class="edge" x1="610" y1="268" x2="700" y2="332"/>
-              <line class="edge" x1="700" y1="368" x2="700" y2="432"/>
-
-              <line class="edge" x1="850" y1="168" x2="850" y2="232"/>
-            </g>
-
-            <!-- nodos -->
-            <g class="node" data-node="body"    tabindex="0"><rect x="498" y="22"  width="104" height="36" rx="7"/><text x="550" y="45">body</text></g>
-
-            <g class="node" data-node="header"  tabindex="0"><rect x="58"  y="132" width="104" height="36" rx="7"/><text x="110" y="155">header</text></g>
-            <g class="node" data-node="nav"     tabindex="0"><rect x="258" y="132" width="104" height="36" rx="7"/><text x="310" y="155">nav</text></g>
-            <g class="node" data-node="section" tabindex="0"><rect x="558" y="132" width="104" height="36" rx="7"/><text x="610" y="155">section</text></g>
-            <g class="node" data-node="aside"   tabindex="0"><rect x="798" y="132" width="104" height="36" rx="7"/><text x="850" y="155">aside</text></g>
-            <g class="node" data-node="footer"  tabindex="0"><rect x="938" y="132" width="104" height="36" rx="7"/><text x="990" y="155">footer</text></g>
-
-            <g class="node" data-node="h1"      tabindex="0"><rect x="58"  y="232" width="104" height="36" rx="7"/><text x="110" y="255">H1</text></g>
-            <g class="node" data-node="ul"      tabindex="0"><rect x="258" y="232" width="104" height="36" rx="7"/><text x="310" y="255">ul</text></g>
-            <g class="node" data-node="article" tabindex="0"><rect x="558" y="232" width="104" height="36" rx="7"/><text x="610" y="255">article</text></g>
-            <g class="node" data-node="p2"      tabindex="0"><rect x="798" y="232" width="104" height="36" rx="7"/><text x="850" y="255">p</text></g>
-
-            <g class="node" data-node="li"      tabindex="0"><rect x="258" y="332" width="104" height="36" rx="7"/><text x="310" y="355">li</text></g>
-            <g class="node" data-node="h2"      tabindex="0"><rect x="468" y="332" width="104" height="36" rx="7"/><text x="520" y="355">H2</text></g>
-            <g class="node" data-node="p1"      tabindex="0"><rect x="558" y="332" width="104" height="36" rx="7"/><text x="610" y="355">p</text></g>
-            <g class="node" data-node="div"     tabindex="0"><rect x="648" y="332" width="104" height="36" rx="7"/><text x="700" y="355">div</text></g>
-
-            <g class="node" data-node="a"       tabindex="0"><rect x="258" y="432" width="104" height="36" rx="7"/><text x="310" y="455">a</text></g>
-            <g class="node" data-node="img"     tabindex="0"><rect x="648" y="432" width="104" height="36" rx="7"/><text x="700" y="455">img</text></g>
-          </svg>
+    <header class="site-header">
+        <div class="wrap site-header__inner">
+            <span class="logo">&lt;DOM/&gt;</span>
+            <nav class="site-nav" aria-label="Navegación principal">
+                <a href="#que-es">Qué es</a>
+                <a href="#arbol">El árbol</a>
+                <a href="#document">document</a>
+                <a href="#acceso">Acceso</a>
+                <a href="#cambios">Cambiar</a>
+                <a href="#eventos">Eventos</a>
+            </nav>
         </div>
+    </header>
 
-        <aside class="node-info" id="nodeInfo" aria-live="polite">
-          <p class="node-info__hint">← Selecciona un nodo</p>
-        </aside>
-      </div>
-    </div>
-  </section>
+    <main>
 
 
-  <section class="section" id="document">
-    <div class="wrap">
-      <p class="eyebrow">El objeto raíz</p>
-      <h2>document</h2>
-      <p class="section__lede">
-        Todo empieza aquí. <code>document</code> representa la página completa y
-        expone propiedades hacia el cuerpo y también hacia la cabecera.
-      </p>
+        <section class="hero" id="que-es">
+            <div class="wrap hero__inner">
+                <div class="hero__text">
+                    <p class="eyebrow">Document Object Model</p>
+                    <h1>Cada página web<br>es un árbol.</h1>
+                    <p class="hero__lede">
+                        El DOM convierte tu HTML en una estructura de nodos que JavaScript puede leer,
+                        recorrer y modificar en tiempo real. Cada etiqueta es un <em>element</em>;
+                        cada relación entre etiquetas es una rama.
+                    </p>
+                    <a href="#arbol" class="btn btn--primary">Explorar el árbol ↓</a>
+                </div>
+            </div>
+        </section>
 
-      <div class="card-grid">
-        <article class="card">
-          <p class="card__tag">propiedad</p>
-          <h3><code>document.body</code></h3>
-          <p>Devuelve el elemento <code>&lt;body&gt;</code> completo de la página.</p>
-        </article>
-        <article class="card">
-          <p class="card__tag">propiedad</p>
-          <h3><code>document.title</code></h3>
-          <p>Devuelve el título de la página, el mismo que aparece en la pestaña del navegador.</p>
-        </article>
-        <article class="card">
-          <p class="card__tag">propiedad</p>
-          <h3><code>document.images</code></h3>
-          <p>Un array donde cada índice es una imagen presente en la página.</p>
-        </article>
-        <article class="card">
-          <p class="card__tag">propiedad</p>
-          <h3><code>document.bgColor</code></h3>
-          <p>Define el color de fondo: por nombre ("red") o en hexadecimal (#FFFFFF).</p>
-        </article>
-        <article class="card">
-          <p class="card__tag">método</p>
-          <h3><code>write() / writeln()</code></h3>
-          <p>Escribe expresiones HTML directamente dentro del documento.</p>
-        </article>
-        <article class="card">
-          <p class="card__tag">método</p>
-          <h3><code>open() / close()</code></h3>
-          <p>Abre o cierra el flujo de escritura del documento.</p>
-        </article>
-      </div>
-    </div>
-  </section>
 
-  
-  <section class="section section--alt">
-    <div class="wrap">
-      <p class="eyebrow">Recorrer el árbol</p>
-      <h2>Padres, hijos y hermanos</h2>
-      <p class="section__lede">
-        En el ejemplo del árbol, <code>body</code> tiene 5 hijos —
-        <code>header</code>, <code>nav</code>, <code>section</code>, <code>aside</code> y
-        <code>footer</code>— que son hermanos entre sí. El padre de <code>li</code> es <code>ul</code>.
-      </p>
+        <section class="section section--tree" id="arbol">
+            <div class="wrap">
+                <p class="eyebrow">Signature — árbol interactivo</p>
+                <h2>Toca un nodo para leerlo</h2>
+                <p class="section__lede">
+                    Esta es la misma estructura que tenemos en clase. Cada nodo tiene un padre,
+                    puede tener hermanos y puede tener hijos. Haz clic en cualquiera para ver
+                    cómo JavaScript lo describiría.
+                </p>
 
-      <div class="prop-list">
-        <div class="prop-row"><code>parentNode</code><span>Nodo padre</span></div>
-        <div class="prop-row"><code>childNodes</code><span>Array de nodos hijos</span></div>
-        <div class="prop-row"><code>firstChild</code><span>Primer nodo hijo</span></div>
-        <div class="prop-row"><code>lastChild</code><span>Último nodo hijo</span></div>
-        <div class="prop-row"><code>previousSibling</code><span>Nodo hermano anterior</span></div>
-        <div class="prop-row"><code>nextSibling</code><span>Nodo hermano siguiente</span></div>
-      </div>
+                <div class="tree-panel">
+                    <div class="tree-scroll">
+                        <svg class="dom-svg" id="domTree" viewBox="40 0 1030 500" xmlns="http://www.w3.org/2000/svg">
 
-      <pre class="code-block"><code>var x = document.getElementById("miLI").parentNode.nodeName;
+                            <!-- líneas de conexión -->
+                            <g class="edges">
+                                <line class="edge" x1="550" y1="58" x2="110" y2="132" />
+                                <line class="edge" x1="550" y1="58" x2="310" y2="132" />
+                                <line class="edge" x1="550" y1="58" x2="610" y2="132" />
+                                <line class="edge" x1="550" y1="58" x2="850" y2="132" />
+                                <line class="edge" x1="550" y1="58" x2="990" y2="132" />
+
+                                <line class="edge" x1="110" y1="168" x2="110" y2="232" />
+                                <line class="edge" x1="310" y1="168" x2="310" y2="232" />
+                                <line class="edge" x1="310" y1="268" x2="310" y2="332" />
+                                <line class="edge" x1="310" y1="368" x2="310" y2="432" />
+
+                                <line class="edge" x1="610" y1="168" x2="610" y2="232" />
+                                <line class="edge" x1="610" y1="268" x2="520" y2="332" />
+                                <line class="edge" x1="610" y1="268" x2="610" y2="332" />
+                                <line class="edge" x1="610" y1="268" x2="700" y2="332" />
+                                <line class="edge" x1="700" y1="368" x2="700" y2="432" />
+
+                                <line class="edge" x1="850" y1="168" x2="850" y2="232" />
+                            </g>
+
+                            <!-- nodos -->
+                            <g class="node" data-node="body" tabindex="0">
+                                <rect x="498" y="22" width="104" height="36" rx="7" /><text x="550" y="45">body</text>
+                            </g>
+
+                            <g class="node" data-node="header" tabindex="0">
+                                <rect x="58" y="132" width="104" height="36" rx="7" /><text x="110"
+                                    y="155">header</text>
+                            </g>
+                            <g class="node" data-node="nav" tabindex="0">
+                                <rect x="258" y="132" width="104" height="36" rx="7" /><text x="310" y="155">nav</text>
+                            </g>
+                            <g class="node" data-node="section" tabindex="0">
+                                <rect x="558" y="132" width="104" height="36" rx="7" /><text x="610"
+                                    y="155">section</text>
+                            </g>
+                            <g class="node" data-node="aside" tabindex="0">
+                                <rect x="798" y="132" width="104" height="36" rx="7" /><text x="850"
+                                    y="155">aside</text>
+                            </g>
+                            <g class="node" data-node="footer" tabindex="0">
+                                <rect x="938" y="132" width="104" height="36" rx="7" /><text x="990"
+                                    y="155">footer</text>
+                            </g>
+
+                            <g class="node" data-node="h1" tabindex="0">
+                                <rect x="58" y="232" width="104" height="36" rx="7" /><text x="110" y="255">H1</text>
+                            </g>
+                            <g class="node" data-node="ul" tabindex="0">
+                                <rect x="258" y="232" width="104" height="36" rx="7" /><text x="310" y="255">ul</text>
+                            </g>
+                            <g class="node" data-node="article" tabindex="0">
+                                <rect x="558" y="232" width="104" height="36" rx="7" /><text x="610"
+                                    y="255">article</text>
+                            </g>
+                            <g class="node" data-node="p2" tabindex="0">
+                                <rect x="798" y="232" width="104" height="36" rx="7" /><text x="850" y="255">p</text>
+                            </g>
+
+                            <g class="node" data-node="li" tabindex="0">
+                                <rect x="258" y="332" width="104" height="36" rx="7" /><text x="310" y="355">li</text>
+                            </g>
+                            <g class="node" data-node="h2" tabindex="0">
+                                <rect x="468" y="332" width="104" height="36" rx="7" /><text x="520" y="355">H2</text>
+                            </g>
+                            <g class="node" data-node="p1" tabindex="0">
+                                <rect x="558" y="332" width="104" height="36" rx="7" /><text x="610" y="355">p</text>
+                            </g>
+                            <g class="node" data-node="div" tabindex="0">
+                                <rect x="648" y="332" width="104" height="36" rx="7" /><text x="700" y="355">div</text>
+                            </g>
+
+                            <g class="node" data-node="a" tabindex="0">
+                                <rect x="258" y="432" width="104" height="36" rx="7" /><text x="310" y="455">a</text>
+                            </g>
+                            <g class="node" data-node="img" tabindex="0">
+                                <rect x="648" y="432" width="104" height="36" rx="7" /><text x="700" y="455">img</text>
+                            </g>
+                        </svg>
+                    </div>
+
+                    <aside class="node-info" id="nodeInfo" aria-live="polite">
+                        <p class="node-info__hint">← Selecciona un nodo</p>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section" id="document">
+            <div class="wrap">
+                <p class="eyebrow">El objeto raíz</p>
+                <h2>document</h2>
+                <p class="section__lede">
+                    Todo empieza aquí. <code>document</code> representa la página completa y
+                    expone propiedades hacia el cuerpo y también hacia la cabecera.
+                </p>
+
+                <div class="card-grid">
+                    <article class="card">
+                        <p class="card__tag">propiedad</p>
+                        <h3><code>document.body</code></h3>
+                        <p>Devuelve el elemento <code>&lt;body&gt;</code> completo de la página.</p>
+                    </article>
+                    <article class="card">
+                        <p class="card__tag">propiedad</p>
+                        <h3><code>document.title</code></h3>
+                        <p>Devuelve el título de la página, el mismo que aparece en la pestaña del navegador.</p>
+                    </article>
+                    <article class="card">
+                        <p class="card__tag">propiedad</p>
+                        <h3><code>document.images</code></h3>
+                        <p>Un array donde cada índice es una imagen presente en la página.</p>
+                    </article>
+                    <article class="card">
+                        <p class="card__tag">propiedad</p>
+                        <h3><code>document.bgColor</code></h3>
+                        <p>Define el color de fondo: por nombre ("red") o en hexadecimal (#FFFFFF).</p>
+                    </article>
+                    <article class="card">
+                        <p class="card__tag">método</p>
+                        <h3><code>write() / writeln()</code></h3>
+                        <p>Escribe expresiones HTML directamente dentro del documento.</p>
+                    </article>
+                    <article class="card">
+                        <p class="card__tag">método</p>
+                        <h3><code>open() / close()</code></h3>
+                        <p>Abre o cierra el flujo de escritura del documento.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section section--alt">
+            <div class="wrap">
+                <p class="eyebrow">Recorrer el árbol</p>
+                <h2>Padres, hijos y hermanos</h2>
+                <p class="section__lede">
+                    En el ejemplo del árbol, <code>body</code> tiene 5 hijos —
+                    <code>header</code>, <code>nav</code>, <code>section</code>, <code>aside</code> y
+                    <code>footer</code>— que son hermanos entre sí. El padre de <code>li</code> es <code>ul</code>.
+                </p>
+
+                <div class="prop-list">
+                    <div class="prop-row"><code>parentNode</code><span>Nodo padre</span></div>
+                    <div class="prop-row"><code>childNodes</code><span>Array de nodos hijos</span></div>
+                    <div class="prop-row"><code>firstChild</code><span>Primer nodo hijo</span></div>
+                    <div class="prop-row"><code>lastChild</code><span>Último nodo hijo</span></div>
+                    <div class="prop-row"><code>previousSibling</code><span>Nodo hermano anterior</span></div>
+                    <div class="prop-row"><code>nextSibling</code><span>Nodo hermano siguiente</span></div>
+                </div>
+
+                <pre class="code-block"><code>var x = document.getElementById("miLI").parentNode.nodeName;
 // x vale "UL"</code></pre>
-    </div>
-  </section>
+            </div>
+        </section>
 
-  
-  <section class="section" id="acceso">
-    <div class="wrap">
-      <p class="eyebrow">Encontrar nodos</p>
-      <h2>Los tres métodos de acceso</h2>
 
-      <div class="method-list">
-        <div class="method">
-          <span class="method__num">01</span>
-          <div>
-            <h3><code>getElementById()</code></h3>
-            <p>Accede a un elemento por su <code>id</code>. No debe repetirse en todo el HTML. Es la forma más usada.</p>
-          </div>
-        </div>
-        <div class="method">
-          <span class="method__num">02</span>
-          <div>
-            <h3><code>getElementsByTagName()</code></h3>
-            <p>Devuelve un array con todos los elementos que coinciden con una etiqueta, en el orden del documento.</p>
-          </div>
-        </div>
-        <div class="method">
-          <span class="method__num">03</span>
-          <div>
-            <h3><code>getElementsByName()</code></h3>
-            <p>Recupera los elementos que comparten un atributo <code>name</code>, también en orden del documento.</p>
-          </div>
-        </div>
-      </div>
+        <section class="section" id="acceso">
+            <div class="wrap">
+                <p class="eyebrow">Encontrar nodos</p>
+                <h2>Los tres métodos de acceso</h2>
 
-      
-      <div class="demo">
-        <p class="demo__label">Demo en vivo · innerHTML</p>
-        <p class="demo__text">Este botón usa exactamente <code>document.getElementById("demo").innerHTML = "Hola Mundo"</code></p>
-        <div class="demo__stage">
-          <button class="btn btn--secondary" id="btnPulsame">Pulsame</button>
-          <p id="demo" class="demo__output"></p>
-        </div>
-      </div>
-    </div>
-  </section>
+                <div class="method-list">
+                    <div class="method">
+                        <span class="method__num">01</span>
+                        <div>
+                            <h3><code>getElementById()</code></h3>
+                            <p>Accede a un elemento por su <code>id</code>. No debe repetirse en todo el HTML. Es la
+                                forma más usada.</p>
+                        </div>
+                    </div>
+                    <div class="method">
+                        <span class="method__num">02</span>
+                        <div>
+                            <h3><code>getElementsByTagName()</code></h3>
+                            <p>Devuelve un array con todos los elementos que coinciden con una etiqueta, en el orden del
+                                documento.</p>
+                        </div>
+                    </div>
+                    <div class="method">
+                        <span class="method__num">03</span>
+                        <div>
+                            <h3><code>getElementsByName()</code></h3>
+                            <p>Recupera los elementos que comparten un atributo <code>name</code>, también en orden del
+                                documento.</p>
+                        </div>
+                    </div>
+                </div>
 
-  
-  <section class="section section--alt" id="cambios">
-    <div class="wrap">
-      <p class="eyebrow">Modificar el DOM</p>
-      <h2>innerHTML, setAttribute y style</h2>
-      <p class="section__lede">
-        También se puede cambiar un atributo o estilo directamente:
-        <code>elemento.atributo = valor</code> o <code>elemento.style.propiedad = estilo</code>.
-      </p>
 
-      
-      <div class="demo">
-        <p class="demo__label">Demo en vivo · setAttribute + style</p>
-        <div class="demo__stage demo__stage--split">
-          <div class="demo__box" id="demoBox">caja de ejemplo</div>
-          <div class="demo__controls">
-            <button class="btn btn--ghost" data-action="color">setAttribute("style", ...)</button>
-            <button class="btn btn--ghost" data-action="text">style.transform</button>
-            <button class="btn btn--ghost" data-action="reset">reset</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+                <div class="demo">
+                    <p class="demo__label">Demo en vivo · innerHTML</p>
+                    <p class="demo__text">Este botón usa exactamente
+                        <code>document.getElementById("demo").innerHTML = "Hola Mundo"</code></p>
+                    <div class="demo__stage">
+                        <button class="btn btn--secondary" id="btnPulsame">Pulsame</button>
+                        <p id="demo" class="demo__output"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
- 
-  <section class="section" id="eventos">
-    <div class="wrap">
-      <p class="eyebrow">Reaccionar a la persona</p>
-      <h2>Manejadores de eventos</h2>
-      <p class="section__lede">
-        Se agregan asignando una función a un evento:
-        <code>document.getElementById(id).evento = function() {}</code>.
-        Todos los demos de esta página funcionan así.
-      </p>
-      <pre class="code-block"><code>document.getElementById("btnPulsame").onclick = function() {
+
+        <section class="section section--alt" id="cambios">
+            <div class="wrap">
+                <p class="eyebrow">Modificar el DOM</p>
+                <h2>innerHTML, setAttribute y style</h2>
+                <p class="section__lede">
+                    También se puede cambiar un atributo o estilo directamente:
+                    <code>elemento.atributo = valor</code> o <code>elemento.style.propiedad = estilo</code>.
+                </p>
+
+
+                <div class="demo">
+                    <p class="demo__label">Demo en vivo · setAttribute + style</p>
+                    <div class="demo__stage demo__stage--split">
+                        <div class="demo__box" id="demoBox">caja de ejemplo</div>
+                        <div class="demo__controls">
+                            <button class="btn btn--ghost" data-action="color">setAttribute("style", ...)</button>
+                            <button class="btn btn--ghost" data-action="text">style.transform</button>
+                            <button class="btn btn--ghost" data-action="reset">reset</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section" id="eventos">
+            <div class="wrap">
+                <p class="eyebrow">Reaccionar a la persona</p>
+                <h2>Manejadores de eventos</h2>
+                <p class="section__lede">
+                    Se agregan asignando una función a un evento:
+                    <code>document.getElementById(id).evento = function() {}</code>.
+                    Todos los demos de esta página funcionan así.
+                </p>
+                <pre class="code-block"><code>document.getElementById("btnPulsame").onclick = function() {
   document.getElementById("demo").innerHTML = "Hola Mundo";
 };</code></pre>
-    </div>
-  </section>
+            </div>
+        </section>
 
 
-  <section class="section section--alt">
-    <div class="wrap">
-      <p class="eyebrow">Un adelanto</p>
-      <h2>El objeto form</h2>
-      <p class="section__lede">
-        Los formularios son la forma más común de recoger información en la web,
-        usando elementos como <code>text</code>, <code>textarea</code> y <code>radio</code>.
-      </p>
-    </div>
-  </section>
+        <section class="section section--alt">
+            <div class="wrap">
+                <p class="eyebrow">Un adelanto</p>
+                <h2>El objeto form</h2>
+                <p class="section__lede">
+                    Los formularios son la forma más común de recoger información en la web,
+                    usando elementos como <code>text</code>, <code>textarea</code> y <code>radio</code>.
+                </p>
+            </div>
+        </section>
 
-</main>
+    </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    
-  </div>
-</footer>
+    <footer class="site-footer">
+        <div class="wrap">
 
-<script src="script.js"></script>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
+
 </html>
