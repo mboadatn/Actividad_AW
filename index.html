@@ -26,7 +26,7 @@
 
 <main>
 
-  <!-- HERO -->
+
   <section class="hero" id="que-es">
     <div class="wrap hero__inner">
       <div class="hero__text">
@@ -34,7 +34,7 @@
         <h1>Cada página web<br>es un árbol.</h1>
         <p class="hero__lede">
           El DOM convierte tu HTML en una estructura de nodos que JavaScript puede leer,
-          recorrer y modificar en tiempo real. Cada etiqueta es un <em>elemento</em>;
+          recorrer y modificar en tiempo real. Cada etiqueta es un <em>element</em>;
           cada relación entre etiquetas es una rama.
         </p>
         <a href="#arbol" class="btn btn--primary">Explorar el árbol ↓</a>
@@ -42,7 +42,7 @@
     </div>
   </section>
 
-  <!-- ARBOL INTERACTIVO -->
+  
   <section class="section section--tree" id="arbol">
     <div class="wrap">
       <p class="eyebrow">Signature — árbol interactivo</p>
@@ -55,56 +55,52 @@
 
       <div class="tree-panel">
         <div class="tree-scroll">
-          <div class="tree" id="domTree">
-            <ul>
-              <li>
-                <button class="node" data-node="body">body</button>
-                <ul>
-                  <li>
-                    <button class="node" data-node="header">header</button>
-                    <ul><li><button class="node" data-node="h1">H1</button></li></ul>
-                  </li>
-                  <li>
-                    <button class="node" data-node="nav">nav</button>
-                    <ul>
-                      <li>
-                        <button class="node" data-node="ul">ul</button>
-                        <ul>
-                          <li>
-                            <button class="node" data-node="li">li</button>
-                            <ul><li><button class="node" data-node="a">a</button></li></ul>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <button class="node" data-node="section">section</button>
-                    <ul>
-                      <li>
-                        <button class="node" data-node="article">article</button>
-                        <ul>
-                          <li><button class="node" data-node="h2">H2</button></li>
-                          <li><button class="node" data-node="p1">p</button></li>
-                          <li>
-                            <button class="node" data-node="div">div</button>
-                            <ul><li><button class="node" data-node="img">img</button></li></ul>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <button class="node" data-node="aside">aside</button>
-                    <ul><li><button class="node" data-node="p2">p</button></li></ul>
-                  </li>
-                  <li>
-                    <button class="node" data-node="footer">footer</button>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
+          <svg class="dom-svg" id="domTree" viewBox="40 0 1030 500" xmlns="http://www.w3.org/2000/svg">
+
+            <!-- líneas de conexión -->
+            <g class="edges">
+              <line class="edge" x1="550" y1="58"  x2="110" y2="132"/>
+              <line class="edge" x1="550" y1="58"  x2="310" y2="132"/>
+              <line class="edge" x1="550" y1="58"  x2="610" y2="132"/>
+              <line class="edge" x1="550" y1="58"  x2="850" y2="132"/>
+              <line class="edge" x1="550" y1="58"  x2="990" y2="132"/>
+
+              <line class="edge" x1="110" y1="168" x2="110" y2="232"/>
+              <line class="edge" x1="310" y1="168" x2="310" y2="232"/>
+              <line class="edge" x1="310" y1="268" x2="310" y2="332"/>
+              <line class="edge" x1="310" y1="368" x2="310" y2="432"/>
+
+              <line class="edge" x1="610" y1="168" x2="610" y2="232"/>
+              <line class="edge" x1="610" y1="268" x2="520" y2="332"/>
+              <line class="edge" x1="610" y1="268" x2="610" y2="332"/>
+              <line class="edge" x1="610" y1="268" x2="700" y2="332"/>
+              <line class="edge" x1="700" y1="368" x2="700" y2="432"/>
+
+              <line class="edge" x1="850" y1="168" x2="850" y2="232"/>
+            </g>
+
+            <!-- nodos -->
+            <g class="node" data-node="body"    tabindex="0"><rect x="498" y="22"  width="104" height="36" rx="7"/><text x="550" y="45">body</text></g>
+
+            <g class="node" data-node="header"  tabindex="0"><rect x="58"  y="132" width="104" height="36" rx="7"/><text x="110" y="155">header</text></g>
+            <g class="node" data-node="nav"     tabindex="0"><rect x="258" y="132" width="104" height="36" rx="7"/><text x="310" y="155">nav</text></g>
+            <g class="node" data-node="section" tabindex="0"><rect x="558" y="132" width="104" height="36" rx="7"/><text x="610" y="155">section</text></g>
+            <g class="node" data-node="aside"   tabindex="0"><rect x="798" y="132" width="104" height="36" rx="7"/><text x="850" y="155">aside</text></g>
+            <g class="node" data-node="footer"  tabindex="0"><rect x="938" y="132" width="104" height="36" rx="7"/><text x="990" y="155">footer</text></g>
+
+            <g class="node" data-node="h1"      tabindex="0"><rect x="58"  y="232" width="104" height="36" rx="7"/><text x="110" y="255">H1</text></g>
+            <g class="node" data-node="ul"      tabindex="0"><rect x="258" y="232" width="104" height="36" rx="7"/><text x="310" y="255">ul</text></g>
+            <g class="node" data-node="article" tabindex="0"><rect x="558" y="232" width="104" height="36" rx="7"/><text x="610" y="255">article</text></g>
+            <g class="node" data-node="p2"      tabindex="0"><rect x="798" y="232" width="104" height="36" rx="7"/><text x="850" y="255">p</text></g>
+
+            <g class="node" data-node="li"      tabindex="0"><rect x="258" y="332" width="104" height="36" rx="7"/><text x="310" y="355">li</text></g>
+            <g class="node" data-node="h2"      tabindex="0"><rect x="468" y="332" width="104" height="36" rx="7"/><text x="520" y="355">H2</text></g>
+            <g class="node" data-node="p1"      tabindex="0"><rect x="558" y="332" width="104" height="36" rx="7"/><text x="610" y="355">p</text></g>
+            <g class="node" data-node="div"     tabindex="0"><rect x="648" y="332" width="104" height="36" rx="7"/><text x="700" y="355">div</text></g>
+
+            <g class="node" data-node="a"       tabindex="0"><rect x="258" y="432" width="104" height="36" rx="7"/><text x="310" y="455">a</text></g>
+            <g class="node" data-node="img"     tabindex="0"><rect x="648" y="432" width="104" height="36" rx="7"/><text x="700" y="455">img</text></g>
+          </svg>
         </div>
 
         <aside class="node-info" id="nodeInfo" aria-live="polite">
@@ -114,7 +110,7 @@
     </div>
   </section>
 
-  <!-- OBJETO DOCUMENT -->
+
   <section class="section" id="document">
     <div class="wrap">
       <p class="eyebrow">El objeto raíz</p>
@@ -159,7 +155,7 @@
     </div>
   </section>
 
-  <!-- NAVEGACION DEL ARBOL -->
+  
   <section class="section section--alt">
     <div class="wrap">
       <p class="eyebrow">Recorrer el árbol</p>
@@ -184,7 +180,7 @@
     </div>
   </section>
 
-  <!-- ACCESO A ELEMENTOS -->
+  
   <section class="section" id="acceso">
     <div class="wrap">
       <p class="eyebrow">Encontrar nodos</p>
@@ -214,7 +210,7 @@
         </div>
       </div>
 
-      <!-- DEMO 1: innerHTML -->
+      
       <div class="demo">
         <p class="demo__label">Demo en vivo · innerHTML</p>
         <p class="demo__text">Este botón usa exactamente <code>document.getElementById("demo").innerHTML = "Hola Mundo"</code></p>
@@ -226,7 +222,7 @@
     </div>
   </section>
 
-  <!-- CAMBIAR ELEMENTOS -->
+  
   <section class="section section--alt" id="cambios">
     <div class="wrap">
       <p class="eyebrow">Modificar el DOM</p>
@@ -236,7 +232,7 @@
         <code>elemento.atributo = valor</code> o <code>elemento.style.propiedad = estilo</code>.
       </p>
 
-      <!-- DEMO 2: setAttribute + style -->
+      
       <div class="demo">
         <p class="demo__label">Demo en vivo · setAttribute + style</p>
         <div class="demo__stage demo__stage--split">
@@ -251,7 +247,7 @@
     </div>
   </section>
 
-  <!-- EVENTOS -->
+ 
   <section class="section" id="eventos">
     <div class="wrap">
       <p class="eyebrow">Reaccionar a la persona</p>
@@ -267,7 +263,7 @@
     </div>
   </section>
 
-  <!-- FORM -->
+
   <section class="section section--alt">
     <div class="wrap">
       <p class="eyebrow">Un adelanto</p>
