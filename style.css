@@ -1,3 +1,4 @@
+
 :root{
   --ink: #101A23;
   --surface: #16222D;
@@ -177,7 +178,6 @@ a{ color: inherit; }
 .card h3{ font-size: 1rem; margin-bottom: .4em; }
 .card p{ color: var(--text-muted); font-size: .92rem; margin: 0; }
 
-
 .prop-list{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -207,7 +207,6 @@ a{ color: inherit; }
 }
 .code-block code{ background: none; padding: 0; color: inherit; }
 
-
 .method-list{ margin-bottom: 2.5em; }
 .method{
   display:flex;
@@ -226,7 +225,6 @@ a{ color: inherit; }
 }
 .method h3{ font-size: 1rem; margin-bottom: .3em; }
 .method p{ color: var(--text-muted); margin: 0; max-width: 60ch; }
-
 
 .demo{
   background: var(--surface-2);
@@ -283,59 +281,54 @@ a{ color: inherit; }
 }
 
 .tree-scroll{
-  background: var(--surface-2);
+  background: #FFFFFF;
   border: 1px solid var(--line);
   border-radius: 12px;
-  padding: 28px 24px;
+  padding: 24px;
+  overflow-x: auto;
 }
 
-.tree, .tree ul{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.tree ul{
-  padding-left: 26px;
-  border-left: 1px solid var(--line);
-  margin-left: 9px;
-}
-.tree > ul{
-  padding-left: 0;
-  border-left: none;
-  margin-left: 0;
-}
-.tree li{
-  position: relative;
-  padding: 5px 0 5px 18px;
-}
-.tree > ul > li{ padding-left: 0; }
-.tree > ul > li::before{ display:none; }
-.tree li::before{
-  content:"";
-  position:absolute;
-  left:0; top: 19px;
-  width: 18px; height: 1px;
-  background: var(--line);
+.dom-svg{
+  width: 100%;
+  height: auto;
+  min-width: 640px;
+  display: block;
 }
 
-.node{
+.edge{
+  stroke: #101A23;
+  stroke-width: 1.5;
+}
+
+.node{ cursor: pointer; }
+.node rect{
+  fill: #FFFFFF;
+  stroke: #101A23;
+  stroke-width: 1.5;
+  transition: fill .15s ease, stroke .15s ease;
+}
+.node text{
   font-family: var(--display);
-  font-size: .85rem;
-  background: var(--surface);
-  color: var(--text);
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  padding: 7px 14px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: border-color .15s ease, color .15s ease, background .15s ease;
+  font-size: 14px;
+  fill: #101A23;
+  text-anchor: middle;
+  dominant-baseline: middle;
+  pointer-events: none;
+  transition: fill .15s ease;
 }
-.node:hover{ border-color: var(--moss); color: var(--moss); }
-.node.is-active{
-  background: var(--amber);
-  border-color: var(--amber);
-  color: var(--ink);
+.node:hover rect{ stroke: var(--moss); }
+.node:hover text{ fill: var(--moss); }
+.node.is-active rect{
+  fill: var(--amber);
+  stroke: var(--amber);
+}
+.node.is-active text{
+  fill: #101A23;
   font-weight: 700;
+}
+.node:focus-visible rect{
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
 }
 
 .node-info{
@@ -377,7 +370,6 @@ a{ color: inherit; }
   color: var(--moss);
   overflow-x: auto;
 }
-
 
 .site-footer{
   padding: 32px 0;
